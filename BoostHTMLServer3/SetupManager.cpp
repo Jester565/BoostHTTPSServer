@@ -1,0 +1,38 @@
+#include "SetupManager.h"
+#include "IPacket.h"
+#include "OPacket.h"
+#include "TCPConnection.h"
+#include "ClientManager.h"
+#include "Client.h"
+#include <map>
+
+namespace websocket
+{
+	SetupManager::SetupManager(ClientManager* cm)
+		:PKeyOwner(cm->getPacketManager()), cm(cm)
+	{
+		addKey(new PKey("A0", this, &SetupManager::keyA0));
+	}
+
+	void SetupManager::keyA0(IPacket* iPack)
+	{
+		ProtobufPackets::PackA0 packA0;
+		packA0.ParseFromString(*iPack->getData());
+		OPacket* oPackA1 = createPackA1(iPack, packA0);
+		cm->send(oPackA1);
+	}
+
+	OPacket* SetupManager::createPackA1(IPacket* iPack, const ProtobufPackets::PackA0& packA0)
+	{
+		ProtobufPackets::PackA1 packA1;
+		packA1.set_id(iPack->getSentFromID());
+		OPacket* oPackA1 = new OPacket("A1", 0, iPack->getSentFromID());
+		oPackA1->setData(new std::string(packA1.SerializeAsString()));
+		return oPackA1;
+	}
+
+	SetupManager::~SetupManager()
+	{
+
+	}
+}
