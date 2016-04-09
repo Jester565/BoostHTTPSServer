@@ -119,7 +119,7 @@ class PackHeaderIn : public ::google::protobuf::Message {
   const ::std::string& lockey() const;
   void set_lockey(const ::std::string& value);
   void set_lockey(const char* value);
-  void set_lockey(const char* value, size_t size);
+  void set_lockey(const char* value, unsigned int size);
   ::std::string* mutable_lockey();
   ::std::string* release_lockey();
   void set_allocated_lockey(::std::string* lockey);
@@ -229,7 +229,7 @@ class PackHeaderOut : public ::google::protobuf::Message {
   const ::std::string& lockey() const;
   void set_lockey(const ::std::string& value);
   void set_lockey(const char* value);
-  void set_lockey(const char* value, size_t size);
+  void set_lockey(const char* value, unsigned int size);
   ::std::string* mutable_lockey();
   ::std::string* release_lockey();
   void set_allocated_lockey(::std::string* lockey);
@@ -320,7 +320,7 @@ inline void PackHeaderIn::set_lockey(const char* value) {
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackHeaderIn.locKey)
 }
-inline void PackHeaderIn::set_lockey(const char* value, size_t size) {
+inline void PackHeaderIn::set_lockey(const char* value, unsigned int size) {
   set_has_lockey();
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -407,7 +407,7 @@ inline void PackHeaderOut::set_lockey(const char* value) {
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackHeaderOut.locKey)
 }
-inline void PackHeaderOut::set_lockey(const char* value, size_t size) {
+inline void PackHeaderOut::set_lockey(const char* value, unsigned int size) {
   set_has_lockey();
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

@@ -161,7 +161,7 @@ namespace websocket
 		}
 	}
 
-	void ClientManager::sendToAllExcept(OPacket* oPack, IDType* excludeIDs, size_t size)
+	void ClientManager::sendToAllExcept(OPacket* oPack, IDType* excludeIDs, unsigned int size)
 	{
 		for (auto iter = clients.begin(); iter != clients.end(); iter++)
 		{

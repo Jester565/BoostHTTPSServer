@@ -433,7 +433,7 @@ void PackA0::clear_username() {
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackA0.username)
 }
- void PackA0::set_username(const char* value, size_t size) {
+ void PackA0::set_username(const char* value, unsigned int size) {
   set_has_username();
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1065,7 +1065,7 @@ void PackA2::clear_username() {
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackA2.userName)
 }
- void PackA2::set_username(const char* value, size_t size) {
+ void PackA2::set_username(const char* value, unsigned int size) {
   set_has_username();
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

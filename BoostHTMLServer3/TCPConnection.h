@@ -62,7 +62,7 @@ namespace websocket
 		HeaderManager* hm;
 		handshake_manager* hsm;
 		dataframe_manager* dfm;
-		void asyncReceive(const boost::system::error_code& error, std::size_t nBytes);
+		void asyncReceive(const boost::system::error_code& error, unsigned int nBytes);
 		void asyncSend(const boost::system::error_code& error);
 		int errorMode;
 		bool handshakeComplete;

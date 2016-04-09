@@ -522,7 +522,7 @@ void PackHeaderIn::clear_lockey() {
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackHeaderIn.locKey)
 }
- void PackHeaderIn::set_lockey(const char* value, size_t size) {
+ void PackHeaderIn::set_lockey(const char* value, unsigned int size) {
   set_has_lockey();
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -901,7 +901,7 @@ void PackHeaderOut::clear_lockey() {
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackHeaderOut.locKey)
 }
- void PackHeaderOut::set_lockey(const char* value, size_t size) {
+ void PackHeaderOut::set_lockey(const char* value, unsigned int size) {
   set_has_lockey();
   lockey_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

@@ -113,7 +113,7 @@ class PackA0 : public ::google::protobuf::Message {
   const ::std::string& username() const;
   void set_username(const ::std::string& value);
   void set_username(const char* value);
-  void set_username(const char* value, size_t size);
+  void set_username(const char* value, unsigned int size);
   ::std::string* mutable_username();
   ::std::string* release_username();
   void set_allocated_username(::std::string* username);
@@ -303,7 +303,7 @@ class PackA2 : public ::google::protobuf::Message {
   const ::std::string& username() const;
   void set_username(const ::std::string& value);
   void set_username(const char* value);
-  void set_username(const char* value, size_t size);
+  void set_username(const char* value, unsigned int size);
   ::std::string* mutable_username();
   ::std::string* release_username();
   void set_allocated_username(::std::string* username);
@@ -363,7 +363,7 @@ inline void PackA0::set_username(const char* value) {
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackA0.username)
 }
-inline void PackA0::set_username(const char* value, size_t size) {
+inline void PackA0::set_username(const char* value, unsigned int size) {
   set_has_username();
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -472,7 +472,7 @@ inline void PackA2::set_username(const char* value) {
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:ProtobufPackets.PackA2.userName)
 }
-inline void PackA2::set_username(const char* value, size_t size) {
+inline void PackA2::set_username(const char* value, unsigned int size) {
   set_has_username();
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

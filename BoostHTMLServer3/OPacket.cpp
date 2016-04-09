@@ -19,7 +19,7 @@ namespace websocket
 		addSendToID(sendToID);
 	}
 
-	OPacket::OPacket(char* loc, IDType senderID, IDType* sendToIDs, size_t sendToIDsSize)
+	OPacket::OPacket(char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize)
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);

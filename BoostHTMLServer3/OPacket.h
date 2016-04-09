@@ -16,7 +16,7 @@ namespace websocket
 
 		OPacket(char* loc, IDType senderID, IDType sendToID);
 
-		OPacket(char* loc, IDType senderID, IDType* sendToIDs, size_t sendToIDsSize);
+		OPacket(char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize);
 
 		OPacket(char* loc, IDType senderID, std::vector <IDType> sendToIDs);
 

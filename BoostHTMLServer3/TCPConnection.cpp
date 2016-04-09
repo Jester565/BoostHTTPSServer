@@ -34,7 +34,7 @@ namespace websocket
 		socket->async_read_some(boost::asio::buffer(*receiveData), boost::bind(&TCPConnection::asyncReceive, shared_from_this(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 	}
 
-	void TCPConnection::asyncReceive(const boost::system::error_code& error, std::size_t nBytes)
+	void TCPConnection::asyncReceive(const boost::system::error_code& error, std::unsigned int nBytes)
 	{
 		if (error)
 		{

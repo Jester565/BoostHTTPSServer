@@ -4,9 +4,9 @@
 namespace websocket
 {
 	typedef uint32_t IDType;
-	static const size_t ID_TYPE_SIZE_BITS = 32;
-	static const size_t ID_TYPE_SIZE_BYTES = ID_TYPE_SIZE_BITS / 8;
-	static const size_t MAX_DATA_SIZE = 1024;
+	static const unsigned int ID_TYPE_SIZE_BITS = 32;
+	static const unsigned int ID_TYPE_SIZE_BYTES = ID_TYPE_SIZE_BITS / 8;
+	static const unsigned int MAX_DATA_SIZE = 1024;
 	static const char UNDEFINED_LOC = 'Z';
 
 	static const int THROW_ON_ERROR = 0;

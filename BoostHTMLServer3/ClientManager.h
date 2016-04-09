@@ -50,7 +50,7 @@ namespace websocket
 
 		virtual void sendToAllExcept(OPacket* oPack, IDType excludeID);
 
-		virtual void sendToAllExcept(OPacket* oPack, IDType* excludeIDs, size_t size);
+		virtual void sendToAllExcept(OPacket* oPack, IDType* excludeIDs, unsigned int size);
 
 		void setErrorMode(int mode)
 		{

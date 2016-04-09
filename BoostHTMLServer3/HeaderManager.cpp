@@ -80,7 +80,7 @@ namespace websocket
 		}
 	}
 
-	IPacket* const HeaderManager::decryptHeader(char* header, size_t size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	IPacket* const HeaderManager::decryptHeader(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
 	{
 		if (bEndian)
 		{
@@ -89,10 +89,10 @@ namespace websocket
 		return decryptHeaderFromBigEndian(header, size, serverRead, dataFrame, cID);
 	}
 
-	IPacket* const HeaderManager::decryptHeaderAsBigEndian(char* header, size_t size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	IPacket* const HeaderManager::decryptHeaderAsBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
 	{
 		IPacket* iPack = new IPacket();
-		size_t headerPackSize = ((header[1] & 0xff) << 8) | (header[0] & 0xff);
+		unsigned int headerPackSize = ((header[1] & 0xff) << 8) | (header[0] & 0xff);
 		char* headerPackArr = new char[headerPackSize];
 		strncpy(headerPackArr, header + HEADER_IN_SIZE, HEADER_IN_SIZE + headerPackSize);
 		ProtobufPackets::PackHeaderIn headerPackIn;
@@ -107,17 +107,17 @@ namespace websocket
 			iPack->sendToClients->at(i) = headerPackIn.sendtoids().Get(i);
 		}
 		serverRead = headerPackIn.serverread();
-		size_t mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
+		unsigned int mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
 		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
 		return iPack;
 	}
 
-	IPacket* const HeaderManager::decryptHeaderFromBigEndian(char* header, size_t size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	IPacket* const HeaderManager::decryptHeaderFromBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
 	{
 		IPacket* iPack = new IPacket();
-		size_t headerPackSize = ((header[0] & 0xff) << 8) | (header[1] & 0xff);
+		unsigned int headerPackSize = ((header[0] & 0xff) << 8) | (header[1] & 0xff);
 		std::cout << headerPackSize << std::endl;
 		char* headerPackArr = new char[headerPackSize];
 		for (int i = 0; i < headerPackSize; i++)
@@ -137,7 +137,7 @@ namespace websocket
 			iPack->sendToClients->at(i) = headerPackIn.sendtoids().Get(i);
 		}
 		serverRead = headerPackIn.serverread();
-		size_t mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
+		unsigned int mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
 		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
