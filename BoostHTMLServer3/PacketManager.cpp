@@ -3,6 +3,7 @@
 #include "IPacket.h"
 #include "PKey.h"
 #include <iostream>
+#include <list>
 
 namespace websocket
 {
@@ -18,7 +19,7 @@ namespace websocket
 		int index = binarySearchKey(found, pKey->getKey());
 		if (!found)
 			pKeys.insert(pKeys.begin() + index, std::list<PKey*>());
-		pKeys.at(index).push_back(pKey);
+ 		pKeys.at(index).push_back(pKey);
 		pKeysMutex.unlock();
 	}
 
@@ -35,7 +36,7 @@ namespace websocket
 		int index = binarySearchKey(found, pKey->getKey());
 		if (found)
 		{
-			for (std::list <PKey*>::const_iterator it = pKeys.at(index).begin(); it != pKeys.at(index).end(); it++)
+			for (std::list <PKey*>::iterator it = pKeys.at(index).begin(); it != pKeys.at(index).end(); it++)
 			{
 				if (pKey == *it)
 				{

@@ -1,6 +1,7 @@
 #pragma once
 #include "PacketMacros.h"
 #include <string>
+#include <iostream>
 #include <vector>
 
 namespace websocket
@@ -88,7 +89,7 @@ namespace websocket
 			return reset;
 		}
 
-		const char const* getLocKey() const
+		const char* getLocKey() const
 		{
 			return locKey;
 		}

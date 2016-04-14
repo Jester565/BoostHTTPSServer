@@ -3,7 +3,6 @@
 #include "HeaderManager.h"
 #include "IPacket.h"
 #include "OPacket.h"
-#include "Reply.h"
 #include "ClientManager.h"
 #include "dataframe_manager.h"
 #include "handshake_manager.h"
@@ -34,7 +33,7 @@ namespace websocket
 		socket->async_read_some(boost::asio::buffer(*receiveData), boost::bind(&TCPConnection::asyncReceive, shared_from_this(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 	}
 
-	void TCPConnection::asyncReceive(const boost::system::error_code& error, std::unsigned int nBytes)
+	void TCPConnection::asyncReceive(const boost::system::error_code& error, unsigned int nBytes)
 	{
 		if (error)
 		{

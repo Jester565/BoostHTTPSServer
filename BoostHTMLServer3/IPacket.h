@@ -2,6 +2,7 @@
 #include "PacketMacros.h"
 #include <vector>
 #include <string>
+#include <iostream>
 
 namespace websocket
 {
