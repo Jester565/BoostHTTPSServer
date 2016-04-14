@@ -51,7 +51,7 @@ namespace websocket
 			cID = id;
 		}
 
-		tcp::socket* getSocket()
+		ssl_socket* getSocket()
 		{
 			return socket;
 		}
