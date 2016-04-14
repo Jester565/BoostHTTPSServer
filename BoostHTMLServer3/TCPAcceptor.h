@@ -30,7 +30,7 @@ namespace websocket
 		int errorMode;
 		std::string getCertPwd()
 		{
-			return "***";
+			return "Makarov's1Dog";
 		}
 	};
 }
