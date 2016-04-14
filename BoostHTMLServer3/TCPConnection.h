@@ -4,6 +4,7 @@
 #include <utility>
 #include <iostream>
 #include <boost/asio.hpp>
+#include <boost/asio/ssl.hpp>
 #include <boost/array.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <stdint.h>
@@ -18,12 +19,16 @@ namespace websocket
 
 	using namespace boost::asio::ip;
 
+	typedef boost::asio::ssl::stream<boost::asio::ip::tcp::socket> ssl_socket;
+
 	class TCPConnection : public boost::enable_shared_from_this <TCPConnection>
 	{
 	public:
-		TCPConnection(PacketManager* pm, tcp::socket* boundSocket);
+		TCPConnection(PacketManager* pm, ssl_socket* boundSocket);
 
-		TCPConnection(PacketManager* pm, tcp::socket* boundSocket, HeaderManager* hm);
+		TCPConnection(PacketManager* pm, ssl_socket* boundSocket, HeaderManager* hm);
+
+		void startSSLHandhshake();
 
 		void startRead();
 
@@ -57,12 +62,13 @@ namespace websocket
 		IDType cID;
 		std::vector <unsigned char>* receiveData;
 		std::vector <uint8_t> sendStorage;
-		tcp::socket* socket;
+		ssl_socket* socket;
 		PacketManager* pm;
 		HeaderManager* hm;
 		handshake_manager* hsm;
 		dataframe_manager* dfm;
 		void asyncReceive(const boost::system::error_code& error, unsigned int nBytes);
+		void asyncSSLHandshake(const boost::system::error_code& error);
 		void asyncSend(const boost::system::error_code& error);
 		int errorMode;
 		bool handshakeComplete;

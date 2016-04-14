@@ -25,8 +25,8 @@ namespace websocket
 	void TCPAcceptor::detach(uint16_t tcpPort)
 	{
 		acceptor = new tcp::acceptor(*ioService, tcp::endpoint(tcp::v6(), tcpPort));
-		tempTCPSocket = new tcp::socket(*ioService);
-		acceptor->async_accept(*tempTCPSocket, boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
+		tempSSLSocket = new ssl_socket(*ioService, sslContext);
+		acceptor->async_accept(tempSSLSocket->lowest_layer(), boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
 	}
 
 	void TCPAcceptor::asyncAccept(const boost::system::error_code& error)
@@ -43,23 +43,21 @@ namespace websocket
 				return;
 				break;
 			case RECALL_ON_ERROR:
-				if (tempTCPSocket != nullptr)
+				if (tempSSLSocket != nullptr)
 				{
-					delete tempTCPSocket;
-					tempTCPSocket = nullptr;
+					delete tempSSLSocket;
+					tempSSLSocket = nullptr;
 				}
-				tempTCPSocket = new tcp::socket(*ioService);
-				acceptor->async_accept(*tempTCPSocket, boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
+				tempSSLSocket = new ssl_socket(*ioService, sslContext);
+				acceptor->async_accept(tempSSLSocket->lowest_layer(), boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
 				return;
 			};
 		}
-		tempTCPSocket->non_blocking(true);
-		tempTCPSocket->native_non_blocking(true);
-		boost::shared_ptr <TCPConnection> tcpConnection(new TCPConnection(pm, tempTCPSocket));
-		tcpConnection->startRead();
+		boost::shared_ptr <TCPConnection> tcpConnection(new TCPConnection(pm, tempSSLSocket));
+		tcpConnection->startSSLHandhshake();
 		server->addClient(tcpConnection);
-		tempTCPSocket = new tcp::socket(*ioService);
-		acceptor->async_accept(*tempTCPSocket, boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
+		tempSSLSocket = new ssl_socket(*ioService, sslContext);
+		acceptor->async_accept(tempSSLSocket->lowest_layer(), boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
 	}
 
 	TCPAcceptor::~TCPAcceptor()

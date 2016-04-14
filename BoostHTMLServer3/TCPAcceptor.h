@@ -9,6 +9,8 @@ namespace websocket
 	class PacketManager;
 	class Server;
 
+	typedef boost::asio::ssl::stream<boost::asio::ip::tcp::socket> ssl_socket;
+
 	class TCPAcceptor
 	{
 	public:
@@ -23,7 +25,7 @@ namespace websocket
 	protected:
 		boost::asio::io_service* ioService;
 		boost::asio::ip::tcp::acceptor* acceptor;
-		boost::asio::ip::tcp::socket* tempTCPSocket;
+		ssl_socket* tempSSLSocket;
 		boost::asio::ssl::context sslContext;
 		PacketManager* pm;
 		Server* server;

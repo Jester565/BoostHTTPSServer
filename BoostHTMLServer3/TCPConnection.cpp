@@ -11,7 +11,7 @@
 
 namespace websocket
 {
-	TCPConnection::TCPConnection(PacketManager* pm, tcp::socket* boundSocket)
+	TCPConnection::TCPConnection(PacketManager* pm, ssl_socket* boundSocket)
 		:pm(pm), socket(boundSocket), receiveData(nullptr), errorMode(DEFAULT_ERROR_MODE), cID(0), handshakeComplete(false)
 	{
 		hm = new HeaderManager();
@@ -19,11 +19,28 @@ namespace websocket
 		hsm = new handshake_manager();
 	}
 
-	TCPConnection::TCPConnection(PacketManager* pm, tcp::socket* boundSocket, HeaderManager* hm)
+	TCPConnection::TCPConnection(PacketManager* pm, ssl_socket* boundSocket, HeaderManager* hm)
 		:pm(pm), socket(boundSocket), hm(hm), receiveData(nullptr), errorMode(DEFAULT_ERROR_MODE)
 	{
 		dfm = new dataframe_manager();
 		hsm = new handshake_manager();
+	}
+
+	void TCPConnection::startSSLHandhshake()
+	{
+		socket->async_handshake(boost::asio::ssl::stream_base::server, boost::bind(&TCPConnection::asyncSSLHandshake, this, boost::asio::placeholders::error));
+	}
+
+	void TCPConnection::asyncSSLHandshake(const boost::system::error_code& error)
+	{
+		if (!error)
+		{
+			startRead();
+		}
+		else
+		{
+			std::cout << "Error occured in SSL Handshake: " << error.message << std::endl;
+		}
 	}
 
 	void TCPConnection::startRead()
@@ -148,12 +165,12 @@ namespace websocket
 			receiveData = nullptr;
 		}
 		boost::system::error_code ec;
-		socket->shutdown(tcp::socket::shutdown_both, ec);
+		socket->lowest_layer().shutdown(tcp::socket::shutdown_both, ec);
 		if (ec)
 		{
 			std::cerr << "Error when closing TCPConnection: " << ec.message() << std::endl;
 		}
-		socket->close();
+		socket->lowest_layer().close();
 		delete socket;
 		socket = nullptr;
 
