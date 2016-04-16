@@ -8,6 +8,8 @@
 #include "handshake_manager.h"
 #include "dataframe.h"
 #include <iostream>
+#include <crypto/err/err.h>
+#include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
 namespace websocket
@@ -42,6 +44,13 @@ namespace websocket
 		else
 		{
 			std::cout << "Error occured in SSL Handshake: " << error << " - " << error.message() << std::endl;
+			std::string hrerr;
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_LIB(error.value()));
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_FUNC(error.value()));
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_REASON(error.value()));
+			char buf[128];
+			ERR_error_string_n(error.value(), buf, 128);
+			hrerr += buf;
 		}
 	}
 
