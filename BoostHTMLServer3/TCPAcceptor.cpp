@@ -13,13 +13,13 @@ namespace websocket
 	TCPAcceptor::TCPAcceptor(boost::asio::io_service* ioService, PacketManager* pm, Server* server)
 		:ioService(ioService), pm(pm), server(server), errorMode(DEFAULT_ERROR_MODE), sslContext(*ioService, boost::asio::ssl::context::sslv23)
 	{
-		sslContext.set_options(
-			boost::asio::ssl::context::default_workarounds
-			| boost::asio::ssl::context::no_sslv2
-			| boost::asio::ssl::context::single_dh_use);
+		sslContext.set_options( boost::asio::ssl::context::default_workarounds | boost::asio::ssl::context::sslv3_server);
+		//sslContext.set_verify_mode(boost::asio::ssl::verify_peer);
+		//sslContext.load_verify_file("local.crt");
 		sslContext.set_password_callback(boost::bind(&TCPAcceptor::getCertPwd, this));
-		sslContext.use_certificate_chain_file("server.crt");
-		sslContext.use_private_key_file("server.key", boost::asio::ssl::context::pem);
+		sslContext.use_certificate_chain_file("local.crt");
+		sslContext.use_private_key_file("local.key", boost::asio::ssl::context::pem);
+		sslContext.use_tmp_dh_file("dh512.pem");
 	}
 
 	void TCPAcceptor::detach(uint16_t tcpPort)

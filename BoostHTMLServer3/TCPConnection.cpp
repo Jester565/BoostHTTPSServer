@@ -7,6 +7,7 @@
 #include "dataframe_manager.h"
 #include "handshake_manager.h"
 #include "dataframe.h"
+#include <iostream>
 #include <boost/bind.hpp>
 
 namespace websocket
@@ -35,11 +36,12 @@ namespace websocket
 	{
 		if (!error)
 		{
+			std::cout << "SSL Handshake Success!" << std::endl;
 			startRead();
 		}
 		else
 		{
-			std::cout << "Error occured in SSL Handshake: " << error.message << std::endl;
+			std::cout << "Error occured in SSL Handshake: " << error << " - " << error.message() << std::endl;
 		}
 	}
 
@@ -52,6 +54,7 @@ namespace websocket
 
 	void TCPConnection::asyncReceive(const boost::system::error_code& error, unsigned int nBytes)
 	{
+		std::cout << "MSG Received" << std::endl;
 		if (error)
 		{
 			if (error == boost::asio::error::connection_reset)
