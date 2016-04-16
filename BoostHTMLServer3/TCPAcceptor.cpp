@@ -16,7 +16,7 @@ namespace websocket
 		sslContext.set_options(boost::asio::ssl::context::default_workarounds
 			| boost::asio::ssl::context::no_sslv2
 			| boost::asio::ssl::context::single_dh_use);
-		sslContext.set_password_callback(boost::bind(&TCPAcceptor::getCertPwd, this));
+		//sslContext.set_password_callback(boost::bind(&TCPAcceptor::getCertPwd, this));
 		sslContext.use_certificate_chain_file("local.crt");
 		sslContext.use_private_key_file("local.key", boost::asio::ssl::context::pem);
 		sslContext.use_tmp_dh_file("dh512.pem");
