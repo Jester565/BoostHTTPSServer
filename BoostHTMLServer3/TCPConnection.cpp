@@ -8,7 +8,8 @@
 #include "handshake_manager.h"
 #include "dataframe.h"
 #include <iostream>
-#include <crypto/err/err.h>
+//#include <crypto/err/err.h>
+#include <openssl/crypto.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
@@ -24,6 +25,7 @@ namespace websocket
 
 	TCPConnection::TCPConnection(PacketManager* pm, ssl_socket* boundSocket, HeaderManager* hm)
 		:pm(pm), socket(boundSocket), hm(hm), receiveData(nullptr), errorMode(DEFAULT_ERROR_MODE)
+
 	{
 		dfm = new dataframe_manager();
 		hsm = new handshake_manager();
@@ -46,11 +48,15 @@ namespace websocket
 			std::cout << "Error occured in SSL Handshake: " << error << " - " << error.message() << std::endl;
 			std::string hrerr;
 			hrerr += boost::lexical_cast<std::string>(ERR_GET_LIB(error.value()));
+			hrerr += ", ";
 			hrerr += boost::lexical_cast<std::string>(ERR_GET_FUNC(error.value()));
+			hrerr += ", ";
 			hrerr += boost::lexical_cast<std::string>(ERR_GET_REASON(error.value()));
+			hrerr += ", ";
 			char buf[128];
 			ERR_error_string_n(error.value(), buf, 128);
 			hrerr += buf;
+			std::cout << "Human Readable Error Version: " << hrerr << std::endl;
 		}
 	}
 
@@ -72,6 +78,18 @@ namespace websocket
 				return;
 			}
 			std::cerr << "Error occured in TCP Reading: " << error << " - " << error.message() << std::endl;
+			std::string hrerr;
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_LIB(error.value()));
+			hrerr += ", ";
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_FUNC(error.value()));
+			hrerr += ", ";
+			hrerr += boost::lexical_cast<std::string>(ERR_GET_REASON(error.value()));
+			hrerr += ", ";
+			char buf[128];
+			ERR_error_string_n(error.value(), buf, 128);
+			hrerr += buf;
+			std::cout << "Human Readable Error Version: " << hrerr << std::endl;
+
 			switch (errorMode)
 			{
 			case THROW_ON_ERROR:
