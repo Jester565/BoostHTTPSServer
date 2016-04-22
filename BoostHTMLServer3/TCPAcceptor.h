@@ -30,9 +30,5 @@ namespace websocket
 		PacketManager* pm;
 		Server* server;
 		int errorMode;
-		std::string getCertPwd()
-		{
-			return "Makarov's1Dog";
-		}
 	};
 }

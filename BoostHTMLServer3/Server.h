@@ -2,6 +2,7 @@
 #include <boost/asio/io_service.hpp>
 #include <boost/shared_ptr.hpp>
 #include <thread>
+#include <memory>
 namespace websocket
 {
 	class ClientManager;
@@ -39,11 +40,8 @@ namespace websocket
 
 	private:
 		boost::asio::io_service* ioService;
-
-		std::thread* ioRunner;
-
-		void ioRunnerMethod();
-
+		std::thread* ioServiceThread;
+		void asyncIOService();
 		PacketManager* pm;
 		SetupManager* sm;
 		ClientManager* cm;

@@ -8,28 +8,26 @@ namespace websocket
 {
 
 	Server::Server()
+	:ioServiceThread(nullptr), ioService(nullptr), pm(nullptr), cm(nullptr), sm(nullptr), tcpAcceptor(nullptr)
 	{
+
 	}
 
 	void Server::createManagers()
 	{
 		ioService = new boost::asio::io_service();
-
 		pm = new PacketManager();
-
 		cm = new ClientManager(ioService, pm);
-
 		sm = new SetupManager(cm);
-
 		pm->setClientManager(cm);
 	}
 
 	void Server::asyncInitServer(uint16_t port)
 	{
-		ioRunner = new std::thread(&Server::ioRunnerMethod, this);
-		ioRunner->detach();
 		tcpAcceptor = new TCPAcceptor(ioService, pm, this);
 		tcpAcceptor->detach(port);
+		ioServiceThread = new std::thread(&Server::asyncIOService, this);
+		ioServiceThread->detach();
 	}
 
 	void Server::syncInitServer(uint16_t port)
@@ -50,33 +48,46 @@ namespace websocket
 		Client* client = cm->addClient(tcpConnection);
 	}
 
-	void Server::ioRunnerMethod()
+	void Server::asyncIOService()
 	{
+		std::cout << "RUNNING" << std::endl;
 		ioService->run();
 	}
 
 	Server::~Server()
 	{
-		if (ioRunner != nullptr)
+		if (tcpAcceptor != nullptr)
 		{
-			delete ioRunner;
-			ioRunner = nullptr;
-		}
-		if (pm != nullptr)
-		{
-			delete pm;
-			pm = nullptr;
+			delete tcpAcceptor;
+			tcpAcceptor = nullptr;
 		}
 		if (cm != nullptr)
 		{
 			delete cm;
 			cm = nullptr;
 		}
-		if (tcpAcceptor != nullptr)
+		if (sm != nullptr)
 		{
-			delete tcpAcceptor;
-			tcpAcceptor = nullptr;
+			delete sm;
+			sm = nullptr;
 		}
+		if (pm != nullptr)
+		{
+			delete pm;
+			pm = nullptr;
+		}
+		ioService->stop();
+		if (ioServiceThread != nullptr)
+		{
+			delete ioServiceThread;
+			ioServiceThread = nullptr;
+		}
+		if (ioService != nullptr)
+		{
+			delete ioService;
+			ioService = nullptr;
+		}
+		google::protobuf::ShutdownProtobufLibrary();
 	}
 
 }

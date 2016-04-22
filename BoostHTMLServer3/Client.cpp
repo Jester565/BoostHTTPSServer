@@ -1,5 +1,7 @@
 #include "Client.h"
 #include "TCPConnection.h"
+#include <memory>
+#include <boost/shared_ptr.hpp>
 
 namespace websocket
 {

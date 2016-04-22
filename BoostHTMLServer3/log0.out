@@ -1,0 +1,857 @@
+==3710== Memcheck, a memory error detector
+==3710== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3710== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==3710== Command: ./run
+==3710== Parent PID: 3263
+==3710== 
+--3710-- 
+--3710-- Valgrind options:
+--3710--    --leak-check=full
+--3710--    --log-file=log0.out
+--3710--    -v
+--3710-- Contents of /proc/version:
+--3710--   Linux version 4.2.0-35-generic (buildd@lgw01-58) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016
+--3710-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3
+--3710-- Page sizes: currently 4096, max supported 4096
+--3710-- Valgrind library directory: /usr/lib/valgrind
+--3710-- Reading syms from /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run
+--3710-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--3710--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--3710--   .. CRC mismatch (computed ef2bc4a1 wanted 12987a55)
+--3710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--3710--   .. CRC is valid
+--3710-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--3710--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--3710--   .. CRC mismatch (computed 4f1eed43 wanted a323a3ab)
+--3710--    object doesn't have a symbol table
+--3710--    object doesn't have a dynamic symbol table
+--3710-- Scheduler: using generic scheduler lock implementation.
+--3710-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==3710== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3710-by-alex-on-???
+==3710== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3710-by-alex-on-???
+==3710== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3710-by-alex-on-???
+==3710== 
+==3710== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3710== don't want to do, unless you know exactly what you're doing,
+==3710== or are doing some strange experiment):
+==3710==   /usr/lib/valgrind/../../bin/vgdb --pid=3710 ...command...
+==3710== 
+==3710== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3710==   /path/to/gdb ./run
+==3710== and then give GDB the following command
+==3710==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=3710
+==3710== --pid is optional if only one valgrind process is running
+==3710== 
+--3710-- REDIR: 0x4019ca0 (ld-linux-x86-64.so.2:strlen) redirected to 0x380764b1 (???)
+--3710-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--3710--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--3710--   .. CRC mismatch (computed fc68135e wanted 45f5e986)
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--3710--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--3710--   .. CRC mismatch (computed ae683f7e wanted 08c06df2)
+--3710--    object doesn't have a symbol table
+==3710== WARNING: new redirection conflicts with existing -- ignoring it
+--3710--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x380764b1 ???
+--3710--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--3710-- REDIR: 0x4019a50 (ld-linux-x86-64.so.2:index) redirected to 0x4c2dd50 (index)
+--3710-- REDIR: 0x4019c70 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2f2f0 (strcmp)
+--3710-- REDIR: 0x401a9c0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31da0 (mempcpy)
+--3710-- Reading syms from /usr/lib/x86_64-linux-gnu/libboost_system.so.1.54.0
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /usr/local/lib/libprotobuf.so.10.0.0
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libssl.so.1.0.0
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+--3710--   Considering /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19 ..
+--3710--   .. CRC mismatch (computed 5ce96d3c wanted bf86fabd)
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--3710--   Considering /lib/x86_64-linux-gnu/libgcc_s.so.1 ..
+--3710--   .. CRC mismatch (computed 6116126e wanted 54e3f1f2)
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--3710--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--3710--   .. CRC mismatch (computed 600bae51 wanted b4d0580d)
+--3710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--3710--   .. CRC is valid
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libpthread-2.19.so
+--3710--   Considering /lib/x86_64-linux-gnu/libpthread-2.19.so ..
+--3710--   .. CRC mismatch (computed 4841b2fb wanted eec353ab)
+--3710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libpthread-2.19.so ..
+--3710--   .. CRC is valid
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libz.so.1.2.8
+--3710--    object doesn't have a symbol table
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libm-2.19.so
+--3710--   Considering /lib/x86_64-linux-gnu/libm-2.19.so ..
+--3710--   .. CRC mismatch (computed 0fbb5cf0 wanted cac31e3b)
+--3710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.19.so ..
+--3710--   .. CRC is valid
+--3710-- Reading syms from /lib/x86_64-linux-gnu/libdl-2.19.so
+--3710--   Considering /lib/x86_64-linux-gnu/libdl-2.19.so ..
+--3710--   .. CRC mismatch (computed f1ad1153 wanted 4c149e5f)
+--3710--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libdl-2.19.so ..
+--3710--   .. CRC is valid
+--3710-- REDIR: 0x6056d60 (libc.so.6:strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x6059050 (libc.so.6:strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x6056530 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x6051070 (libc.so.6:strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x60547c0 (libc.so.6:rindex) redirected to 0x4c2da30 (rindex)
+--3710-- REDIR: 0x6052ac0 (libc.so.6:strlen) redirected to 0x4c2e0e0 (strlen)
+--3710-- REDIR: 0x5b0ed90 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c2b070 (operator new(unsigned long))
+--3710-- REDIR: 0x611a090 (libc.so.6:__memmove_ssse3_back) redirected to 0x4c2f450 (memcpy@GLIBC_2.2.5)
+--3710-- REDIR: 0x5b0d0f0 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c2c250 (operator delete(void*))
+--3710-- REDIR: 0x60565c0 (libc.so.6:memset) redirected to 0x4c31350 (memset)
+--3710-- REDIR: 0x605b730 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x6061fd0 (libc.so.6:__memcpy_sse2_unaligned) redirected to 0x4c2f6b0 (memcpy@@GLIBC_2.14)
+--3710-- REDIR: 0x5b0eea0 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c2b790 (operator new[](unsigned long))
+--3710-- REDIR: 0x5b0d120 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c2c7d0 (operator delete[](void*))
+--3710-- REDIR: 0x6055f60 (libc.so.6:bcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x612a060 (libc.so.6:__memcmp_sse4_1) redirected to 0x4c30c00 (__memcmp_sse4_1)
+--3710-- REDIR: 0x6061d20 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x4c2f1b0 (strcmp)
+--3710-- REDIR: 0x6055fa0 (libc.so.6:__GI_memcmp) redirected to 0x4c30b80 (__GI_memcmp)
+--3710-- REDIR: 0x604c750 (libc.so.6:malloc) redirected to 0x4c2ab10 (malloc)
+--3710-- REDIR: 0x604cef0 (libc.so.6:realloc) redirected to 0x4c2ce10 (realloc)
+--3710-- REDIR: 0x604cdf0 (libc.so.6:free) redirected to 0x4c2bd80 (free)
+--3710-- REDIR: 0x605b780 (libc.so.6:__GI_memcpy) redirected to 0x4c2fc90 (__GI_memcpy)
+--3710-- REDIR: 0x6052f30 (libc.so.6:__GI_strncmp) redirected to 0x4c2e930 (__GI_strncmp)
+--3710-- REDIR: 0x6056bf0 (libc.so.6:__GI_stpcpy) redirected to 0x4c30da0 (__GI_stpcpy)
+--3710-- REDIR: 0x6054780 (libc.so.6:strncpy) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x60671c0 (libc.so.6:__strncpy_sse2_unaligned) redirected to 0x4c2e770 (__strncpy_sse2_unaligned)
+--3710-- REDIR: 0x604d220 (libc.so.6:calloc) redirected to 0x4c2cbf0 (calloc)
+--3710-- REDIR: 0x6052ee0 (libc.so.6:strncmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3710-- REDIR: 0x610b460 (libc.so.6:__strncmp_ssse3) redirected to 0x4c2e8c0 (strncmp)
+--3710-- REDIR: 0xffffffffff600400 (???:???) redirected to 0x3807649d (???)
+--3710-- REDIR: 0x6055410 (libc.so.6:__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
+--3710-- REDIR: 0x6055c10 (libc.so.6:memchr) redirected to 0x4c2f390 (memchr)
+==3710== 
+==3710== Process terminating with default action of signal 2 (SIGINT)
+==3710==    at 0x60B580E: __read_nocancel (syscall-template.S:81)
+==3710==    by 0x604469F: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:613)
+==3710==    by 0x604562D: _IO_default_uflow (genops.c:435)
+==3710==    by 0x6039343: _IO_getline_info (iogetline.c:69)
+==3710==    by 0x60382C5: fgets (iofgets.c:56)
+==3710==    by 0x55538F4: ??? (in /lib/x86_64-linux-gnu/libcrypto.so.1.0.0)
+==3710==    by 0x555245A: BIO_gets (in /lib/x86_64-linux-gnu/libcrypto.so.1.0.0)
+==3710==    by 0x558B69F: PEM_read_bio (in /lib/x86_64-linux-gnu/libcrypto.so.1.0.0)
+==3710==    by 0x558BEE5: PEM_bytes_read_bio (in /lib/x86_64-linux-gnu/libcrypto.so.1.0.0)
+==3710==    by 0x558D3FE: PEM_ASN1_read_bio (in /lib/x86_64-linux-gnu/libcrypto.so.1.0.0)
+==3710==    by 0x5892BC9: SSL_CTX_use_certificate_chain_file (in /lib/x86_64-linux-gnu/libssl.so.1.0.0)
+==3710==    by 0x41FF93: boost::asio::ssl::context::use_certificate_chain_file(std::string const&, boost::system::error_code&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== HEAP SUMMARY:
+==3710==     in use at exit: 122,682 bytes in 3,579 blocks
+==3710==   total heap usage: 5,316 allocs, 1,737 frees, 232,087 bytes allocated
+==3710== 
+==3710== Searching for pointers to 3,579 not-freed blocks
+==3710== Checked 471,048 bytes
+==3710== 
+==3710== 27 bytes in 1 blocks are possibly lost in loss record 567 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x4199ED: websocket::SetupManager::SetupManager(websocket::ClientManager*) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x416000: websocket::Server::createManagers() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x41AE6F: main (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 29 bytes in 1 blocks are possibly lost in loss record 569 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F54EE: MakeTypeNameTable (parser.cc:70)
+==3710==    by 0x50F54EE: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F54EE: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 30 bytes in 1 blocks are possibly lost in loss record 570 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F53EA: MakeTypeNameTable (parser.cc:66)
+==3710==    by 0x50F53EA: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F53EA: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 30 bytes in 1 blocks are possibly lost in loss record 571 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F5574: MakeTypeNameTable (parser.cc:72)
+==3710==    by 0x50F5574: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F5574: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 30 bytes in 1 blocks are possibly lost in loss record 572 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F55B4: MakeTypeNameTable (parser.cc:74)
+==3710==    by 0x50F55B4: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F55B4: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 30 bytes in 1 blocks are possibly lost in loss record 573 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F56A8: MakeTypeNameTable (parser.cc:78)
+==3710==    by 0x50F56A8: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F56A8: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 30 bytes in 1 blocks are possibly lost in loss record 574 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F56E5: MakeTypeNameTable (parser.cc:79)
+==3710==    by 0x50F56E5: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F56E5: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 575 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F53A7: MakeTypeNameTable (parser.cc:65)
+==3710==    by 0x50F53A7: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F53A7: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 576 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F5425: MakeTypeNameTable (parser.cc:67)
+==3710==    by 0x50F5425: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F5425: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 577 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F5531: MakeTypeNameTable (parser.cc:71)
+==3710==    by 0x50F5531: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F5531: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 578 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F55F1: MakeTypeNameTable (parser.cc:75)
+==3710==    by 0x50F55F1: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F55F1: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 579 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F5722: MakeTypeNameTable (parser.cc:80)
+==3710==    by 0x50F5722: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F5722: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 31 bytes in 1 blocks are possibly lost in loss record 580 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F575A: MakeTypeNameTable (parser.cc:81)
+==3710==    by 0x50F575A: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F575A: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 32 bytes in 1 blocks are possibly lost in loss record 614 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F5468: MakeTypeNameTable (parser.cc:68)
+==3710==    by 0x50F5468: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F5468: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 32 bytes in 1 blocks are possibly lost in loss record 615 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F54AB: MakeTypeNameTable (parser.cc:69)
+==3710==    by 0x50F54AB: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F54AB: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 33 bytes in 1 blocks are possibly lost in loss record 616 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F562E: MakeTypeNameTable (parser.cc:76)
+==3710==    by 0x50F562E: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F562E: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 33 bytes in 1 blocks are possibly lost in loss record 617 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x50F566B: MakeTypeNameTable (parser.cc:77)
+==3710==    by 0x50F566B: __static_initialization_and_destruction_0 (parser.cc:86)
+==3710==    by 0x50F566B: _GLOBAL__sub_I_parser.cc (parser.cc:2109)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 34 bytes in 1 blocks are possibly lost in loss record 618 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x41B1B2: websocket::TCPAcceptor::TCPAcceptor(boost::asio::io_service*, websocket::PacketManager*, websocket::Server*) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x4161C2: websocket::Server::syncInitServer(unsigned short) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x41AE80: main (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 36 bytes in 1 blocks are possibly lost in loss record 619 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x43E28C: ProtobufPackets::protobuf_AddDesc_Setup_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44113C: ProtobufPackets::StaticDescriptorInitializer_Setup_2eproto::StaticDescriptorInitializer_Setup_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x440C6D: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x440C82: _GLOBAL__sub_I__ZN15ProtobufPackets33protobuf_AssignDesc_Setup_2eprotoEv (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 37 bytes in 1 blocks are possibly lost in loss record 620 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x439916: ProtobufPackets::protobuf_AddDesc_PackFW_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x43CF7C: ProtobufPackets::StaticDescriptorInitializer_PackFW_2eproto::StaticDescriptorInitializer_PackFW_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x43C205: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x43C21A: _GLOBAL__sub_I__ZN15ProtobufPackets34protobuf_AssignDesc_PackFW_2eprotoEv (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 44 bytes in 1 blocks are possibly lost in loss record 640 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5110F73: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fany_2eproto() (any.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 46 bytes in 1 blocks are possibly lost in loss record 641 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51671B3: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fempty_2eproto() (empty.pb.cc:85)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 47 bytes in 1 blocks are possibly lost in loss record 642 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51453E6: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:72)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51A3955: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ftype_2eproto() (type.pb.cc:238)
+==3710==    by 0x51137A0: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:140)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710== 
+==3710== 49 bytes in 1 blocks are possibly lost in loss record 656 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5164CF3: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fduration_2eproto() (duration.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 50 bytes in 1 blocks are possibly lost in loss record 657 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5110F73: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fany_2eproto() (any.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 50 bytes in 1 blocks are possibly lost in loss record 658 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51137B1: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:159)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 50 bytes in 1 blocks are possibly lost in loss record 659 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x516AB13: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ffield_5fmask_2eproto() (field_mask.pb.cc:87)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 50 bytes in 1 blocks are possibly lost in loss record 660 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51453E6: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:72)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x518B2D7: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fstruct_2eproto() (struct.pb.cc:171)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 50 bytes in 1 blocks are possibly lost in loss record 661 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51A0413: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ftimestamp_2eproto() (timestamp.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 51 bytes in 1 blocks are possibly lost in loss record 662 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51A3955: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ftype_2eproto() (type.pb.cc:238)
+==3710==    by 0x51137A0: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:140)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 51 bytes in 1 blocks are possibly lost in loss record 663 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x44351C: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x4435E8: _GLOBAL__sub_I__ZN9websocket14status_strings13add_to_bufferENS_5reply11status_typeEPSt6vectorIhSaIhEE (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x5FEBE54: (below main) (libc-start.c:246)
+==3710== 
+==3710== 52 bytes in 1 blocks are possibly lost in loss record 664 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51671B3: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fempty_2eproto() (empty.pb.cc:85)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 53 bytes in 1 blocks are possibly lost in loss record 665 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x518B2D7: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fstruct_2eproto() (struct.pb.cc:171)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 54 bytes in 1 blocks are possibly lost in loss record 666 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5188763: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fsource_5fcontext_2eproto() (source_context.pb.cc:87)
+==3710==    by 0x511379B: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:139)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710== 
+==3710== 55 bytes in 1 blocks are possibly lost in loss record 667 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5164CF3: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fduration_2eproto() (duration.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 55 bytes in 1 blocks are possibly lost in loss record 668 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51B0DEB: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fwrappers_2eproto() (wrappers.pb.cc:269)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 56 bytes in 1 blocks are possibly lost in loss record 697 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51A0413: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ftimestamp_2eproto() (timestamp.pb.cc:88)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 57 bytes in 1 blocks are possibly lost in loss record 698 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x515E02B: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fdescriptor_2eproto() (descriptor.pb.cc:814)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 57 bytes in 1 blocks are possibly lost in loss record 699 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x516AB13: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ffield_5fmask_2eproto() (field_mask.pb.cc:87)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 59 bytes in 1 blocks are possibly lost in loss record 700 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x4434DA: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x4435E8: _GLOBAL__sub_I__ZN9websocket14status_strings13add_to_bufferENS_5reply11status_typeEPSt6vectorIhSaIhEE (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x5FEBE54: (below main) (libc-start.c:246)
+==3710== 
+==3710== 61 bytes in 1 blocks are possibly lost in loss record 701 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B48B: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5145205: pair (stl_pair.h:113)
+==3710==    by 0x5145205: InsertIfNotPresent<std::map<std::basic_string<char>, std::pair<void const*, int>, std::less<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::pair<void const*, int> > > > > (map_util.h:333)
+==3710==    by 0x5145205: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:56)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x5188763: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fsource_5fcontext_2eproto() (source_context.pb.cc:87)
+==3710==    by 0x511379B: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:139)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710==    by 0x4001309: ??? (in /lib/x86_64-linux-gnu/ld-2.19.so)
+==3710== 
+==3710== 61 bytes in 1 blocks are possibly lost in loss record 702 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x44355E: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x4435E8: _GLOBAL__sub_I__ZN9websocket14status_strings13add_to_bufferENS_5reply11status_typeEPSt6vectorIhSaIhEE (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x5FEBE54: (below main) (libc-start.c:246)
+==3710== 
+==3710== 89 bytes in 1 blocks are possibly lost in loss record 721 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6B970: char* std::string::_S_construct<char const*>(char const*, char const*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6BD87: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x44A261: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A2B7: _GLOBAL__sub_I__ZN9websocket6Base6411base64CharsE (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44A34C: __libc_csu_init (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x5FEBE54: (below main) (libc-start.c:246)
+==3710== 
+==3710== 107 bytes in 2 blocks are possibly lost in loss record 731 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x439916: ProtobufPackets::protobuf_AddDesc_PackFW_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x43CF7C: ProtobufPackets::StaticDescriptorInitializer_PackFW_2eproto::StaticDescriptorInitializer_PackFW_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x43C205: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 137 bytes in 3 blocks are possibly lost in loss record 756 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51137B1: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:159)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 141 bytes in 3 blocks are possibly lost in loss record 758 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x43E28C: ProtobufPackets::protobuf_AddDesc_Setup_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x44113C: ProtobufPackets::StaticDescriptorInitializer_Setup_2eproto::StaticDescriptorInitializer_Setup_2eproto() (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x440C6D: __static_initialization_and_destruction_0(int, int) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710== 
+==3710== 143 bytes in 3 blocks are possibly lost in loss record 759 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x518B2D7: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fstruct_2eproto() (struct.pb.cc:171)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 233 bytes in 5 blocks are possibly lost in loss record 785 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51A3955: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2ftype_2eproto() (type.pb.cc:238)
+==3710==    by 0x51137A0: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fapi_2eproto() (api.pb.cc:140)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710== 
+==3710== 462 bytes in 9 blocks are possibly lost in loss record 805 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x51B0DEB: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fwrappers_2eproto() (wrappers.pb.cc:269)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== 1,396 bytes in 19 blocks are possibly lost in loss record 842 of 857
+==3710==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3710==    by 0x5B6A248: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AE0A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AEA3: std::string::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x5B6AF47: std::string::append(std::string const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+==3710==    by 0x443B97: std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/alex/Program/BoostHTTPSServer/BoostHTMLServer3/run)
+==3710==    by 0x51452D4: google::protobuf::SimpleDescriptorDatabase::DescriptorIndex<std::pair<void const*, int> >::AddFile(google::protobuf::FileDescriptorProto const&, std::pair<void const*, int>) (descriptor_database.cc:68)
+==3710==    by 0x5141BAA: google::protobuf::EncodedDescriptorDatabase::Add(void const*, int) (descriptor_database.cc:312)
+==3710==    by 0x5118C79: google::protobuf::DescriptorPool::InternalAddGeneratedFile(void const*, int) (descriptor.cc:1157)
+==3710==    by 0x515E02B: google::protobuf::protobuf_AddDesc_google_2fprotobuf_2fdescriptor_2eproto() (descriptor.pb.cc:814)
+==3710==    by 0x4010139: call_init.part.0 (dl-init.c:78)
+==3710==    by 0x4010222: call_init (dl-init.c:36)
+==3710==    by 0x4010222: _dl_init (dl-init.c:126)
+==3710== 
+==3710== LEAK SUMMARY:
+==3710==    definitely lost: 0 bytes in 0 blocks
+==3710==    indirectly lost: 0 bytes in 0 blocks
+==3710==      possibly lost: 4,495 bytes in 87 blocks
+==3710==    still reachable: 118,187 bytes in 3,492 blocks
+==3710==         suppressed: 0 bytes in 0 blocks
+==3710== Reachable blocks (those to which a pointer was found) are not shown.
+==3710== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==3710== 
+==3710== ERROR SUMMARY: 50 errors from 50 contexts (suppressed: 0 from 0)
+==3710== ERROR SUMMARY: 50 errors from 50 contexts (suppressed: 0 from 0)

@@ -42,7 +42,9 @@ namespace websocket
 				{
 					pKeys.at(index).erase(it);
 					if (pKeys.size() == 0)
+					{
 						pKeys.erase(pKeys.begin() + index);
+					}
 					pKeysMutex.unlock();
 					return true;
 				}
@@ -56,7 +58,9 @@ namespace websocket
 	{
 		int foundCount = 0;
 		for (int i = 0; i < rPKeys.size(); i++)
+		{
 			foundCount += removePKey(rPKeys[i]);
+		}
 		return rPKeys.size() - foundCount;
 	}
 

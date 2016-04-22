@@ -16,7 +16,6 @@ namespace websocket
 		sslContext.set_options(boost::asio::ssl::context::default_workarounds
 			| boost::asio::ssl::context::no_sslv2
 			| boost::asio::ssl::context::single_dh_use);
-		//sslContext.set_password_callback(boost::bind(&TCPAcceptor::getCertPwd, this));
 		sslContext.use_certificate_chain_file("local.crt");
 		sslContext.use_private_key_file("local.key", boost::asio::ssl::context::pem);
 		sslContext.use_tmp_dh_file("dh1024.pem");
@@ -24,6 +23,7 @@ namespace websocket
 
 	void TCPAcceptor::detach(uint16_t tcpPort)
 	{
+		std::cout << "DETACHED" << std::endl;
 		acceptor = new tcp::acceptor(*ioService, tcp::endpoint(tcp::v6(), tcpPort));
 		tempSSLSocket = new ssl_socket(*ioService, sslContext);
 		acceptor->async_accept(tempSSLSocket->lowest_layer(), boost::bind(&TCPAcceptor::asyncAccept, this, boost::asio::placeholders::error));
@@ -31,6 +31,7 @@ namespace websocket
 
 	void TCPAcceptor::asyncAccept(const boost::system::error_code& error)
 	{
+		std::cout << "ACCEPTED" << std::endl;
 		if (error)
 		{
 			std::cerr << "Error occured in TCPAcceptor: " << error.message() << std::endl;
@@ -68,6 +69,11 @@ namespace websocket
 		{
 			delete acceptor;
 			acceptor = nullptr;
+		}
+		if (tempSSLSocket != nullptr)
+		{
+			delete tempSSLSocket;
+			tempSSLSocket = nullptr;
 		}
 	}
 }

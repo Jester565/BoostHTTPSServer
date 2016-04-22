@@ -111,6 +111,7 @@ namespace websocket
 		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
+                delete[] headerPackArr;
 		return iPack;
 	}
 
@@ -141,6 +142,7 @@ namespace websocket
 		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
+                delete[] headerPackArr;
 		return iPack;
 	}
 

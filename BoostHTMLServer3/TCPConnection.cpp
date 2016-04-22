@@ -8,8 +8,8 @@
 #include "handshake_manager.h"
 #include "dataframe.h"
 #include <iostream>
-//#include <crypto/err/err.h>
 #include <openssl/crypto.h>
+#include <boost/shared_ptr.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
@@ -116,7 +116,7 @@ namespace websocket
 						dataArr[i] = dataFrame->payload.data()[i];
 					}
 					bool serverRead = false;
-					IPacket* iPack = hm->decryptHeader(dataArr, dataFrame->payload_len, serverRead, dataFrame, cID);
+					boost::shared_ptr<IPacket> iPack = hm->decryptHeader(dataArr, dataFrame->payload_len, serverRead, dataFrame, cID);
 					pm->asyncProcess(iPack, serverRead);
 				}
 				else if (dataFrame->opcode == dataframe::text_frame)
@@ -203,6 +203,5 @@ namespace websocket
 		socket->lowest_layer().close();
 		delete socket;
 		socket = nullptr;
-
 	}
 }
