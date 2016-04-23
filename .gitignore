@@ -82,6 +82,7 @@ ipch/
 *.psess
 *.vsp
 *.vspx
+*.VC.VC.opendb
 
 # TFS 2012 Local Workspace
 $tf/
