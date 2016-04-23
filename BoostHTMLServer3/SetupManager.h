@@ -13,9 +13,9 @@ namespace websocket
 	public:
 		SetupManager(ClientManager* cm);
 
-		void keyA0(IPacket* iPack);
+		void keyA0(boost::shared_ptr<IPacket> iPack);
 
-		OPacket* createPackA1(IPacket* iPack, const ProtobufPackets::PackA0& packA0);
+		boost::shared_ptr<OPacket> createPackA1(boost::shared_ptr<IPacket> iPack, const ProtobufPackets::PackA0& packA0);
 
 		~SetupManager();
 

@@ -32,7 +32,7 @@ namespace websocket
 
 		void startRead();
 
-		void send(OPacket* const oPack);
+		void send(boost::shared_ptr<OPacket> oPack);
 
 		void send(const std::vector <uint8_t>& data);
 
@@ -62,6 +62,7 @@ namespace websocket
 		IDType cID;
 		std::vector <unsigned char>* receiveData;
 		std::vector <uint8_t> sendStorage;
+		boost::shared_ptr<dataframe> dfSendStorage;
 		ssl_socket* socket;
 		PacketManager* pm;
 		HeaderManager* hm;

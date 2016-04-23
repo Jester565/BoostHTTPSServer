@@ -17,7 +17,7 @@ namespace websocket
 		bEndian = (tbend.c[0] == 1);
 	}
 
-	void HeaderManager::encryptHeader(const OPacket* oPack)
+	void HeaderManager::encryptHeader(boost::shared_ptr<OPacket> oPack)
 	{
 		if (bEndian)
 		{
@@ -26,7 +26,7 @@ namespace websocket
 		return encryptHeaderToBigEndian(oPack);
 	}
 
-	void HeaderManager::encryptHeaderAsBigEndian(const OPacket* oPack)
+	void HeaderManager::encryptHeaderAsBigEndian(boost::shared_ptr<OPacket> oPack)
 	{
 		if (oPack->data == nullptr)
 			throw std::invalid_argument("The packet did not provide data");
@@ -53,7 +53,7 @@ namespace websocket
 		}
 	}
 
-	void HeaderManager::encryptHeaderToBigEndian(const OPacket* oPack)
+	void HeaderManager::encryptHeaderToBigEndian(boost::shared_ptr<OPacket> oPack)
 	{
 		if (oPack->data == nullptr)
 			throw std::invalid_argument("The packet did not provide data");
@@ -80,7 +80,7 @@ namespace websocket
 		}
 	}
 
-	IPacket* const HeaderManager::decryptHeader(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	boost::shared_ptr<IPacket> const HeaderManager::decryptHeader(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID)
 	{
 		if (bEndian)
 		{
@@ -89,9 +89,9 @@ namespace websocket
 		return decryptHeaderFromBigEndian(header, size, serverRead, dataFrame, cID);
 	}
 
-	IPacket* const HeaderManager::decryptHeaderAsBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	boost::shared_ptr<IPacket> const HeaderManager::decryptHeaderAsBigEndian(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID)
 	{
-		IPacket* iPack = new IPacket();
+		boost::shared_ptr<IPacket> iPack = boost::make_shared<IPacket>();
 		unsigned int headerPackSize = ((header[1] & 0xff) << 8) | (header[0] & 0xff);
 		char* headerPackArr = new char[headerPackSize];
 		strncpy(headerPackArr, header + HEADER_IN_SIZE, HEADER_IN_SIZE + headerPackSize);
@@ -108,16 +108,16 @@ namespace websocket
 		}
 		serverRead = headerPackIn.serverread();
 		unsigned int mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
-		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
+		boost::shared_ptr<std::string> mainPackDataStr = boost::make_shared<std::string>(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
-                delete[] headerPackArr;
+		delete[] headerPackArr;
 		return iPack;
 	}
 
-	IPacket* const HeaderManager::decryptHeaderFromBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID)
+	boost::shared_ptr<IPacket> const HeaderManager::decryptHeaderFromBigEndian(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID)
 	{
-		IPacket* iPack = new IPacket();
+		boost::shared_ptr<IPacket> iPack = boost::make_shared<IPacket>();
 		unsigned int headerPackSize = ((header[0] & 0xff) << 8) | (header[1] & 0xff);
 		std::cout << headerPackSize << std::endl;
 		char* headerPackArr = new char[headerPackSize];
@@ -139,10 +139,10 @@ namespace websocket
 		}
 		serverRead = headerPackIn.serverread();
 		unsigned int mainPackDataSize = size - headerPackSize - HEADER_IN_SIZE;
-		std::string* mainPackDataStr = new std::string(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
+		boost::shared_ptr<std::string> mainPackDataStr = boost::make_shared<std::string>(header + HEADER_IN_SIZE + headerPackSize, size - (HEADER_IN_SIZE + headerPackSize));
 		iPack->dataFrame = dataFrame;
 		iPack->data = mainPackDataStr;
-                delete[] headerPackArr;
+        delete[] headerPackArr;
 		return iPack;
 	}
 

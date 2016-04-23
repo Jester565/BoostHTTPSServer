@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <boost/shared_ptr.hpp>
 
 namespace websocket
 {
@@ -25,7 +26,7 @@ namespace websocket
 			return locKey;
 		}
 
-		const std::string* getData() const
+		const boost::shared_ptr<std::string> getData() const
 		{
 			return data;
 		}
@@ -35,7 +36,7 @@ namespace websocket
 			return sendToClients;
 		}
 
-		dataframe* getDataFrame()
+		boost::shared_ptr<dataframe> getDataFrame()
 		{
 			return dataFrame;
 		}
@@ -61,15 +62,15 @@ namespace websocket
 			return oStream;
 		}
 
-		std::vector <OPacket*>* convertToOPacks(bool copyData = true);
+		std::vector <boost::shared_ptr<OPacket>>* convertToOPacks(bool copyData = true);
 
 		virtual ~IPacket();
 
 	protected:
 		IDType sentFromID;
 		char locKey[3];
-		dataframe* dataFrame;
-		std::string* data;
+		boost::shared_ptr<dataframe> dataFrame;
+		boost::shared_ptr<std::string> data;
 		std::vector <IDType>* sendToClients;
 	};
 }

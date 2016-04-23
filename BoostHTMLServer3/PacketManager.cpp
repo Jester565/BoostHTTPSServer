@@ -64,7 +64,7 @@ namespace websocket
 		return rPKeys.size() - foundCount;
 	}
 
-	void PacketManager::asyncProcess(IPacket* const iPack, bool serverRead)
+	void PacketManager::asyncProcess(boost::shared_ptr<IPacket> iPack, bool serverRead)
 	{
 		if (serverRead)
 		{
@@ -123,7 +123,7 @@ namespace websocket
 		return (l + f) / 2;
 	}
 
-	void PacketManager::serverProcess(IPacket* const iPack)
+	void PacketManager::serverProcess(boost::shared_ptr<IPacket> iPack)
 	{
 		pKeysMutex.lock();
 		bool found = false;

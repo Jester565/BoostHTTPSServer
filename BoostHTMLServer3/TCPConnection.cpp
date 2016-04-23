@@ -105,7 +105,7 @@ namespace websocket
 		}
 		if (handshakeComplete)
 		{
-			dataframe* dataFrame = dfm->parse_data(*receiveData, nBytes);
+			boost::shared_ptr<dataframe> dataFrame = dfm->parse_data(*receiveData, nBytes);
 			if (dataFrame != nullptr)
 			{
 				if (dataFrame->opcode == dataframe::binary_frame)
@@ -147,9 +147,10 @@ namespace websocket
 		startRead();
 	}
 
-	void TCPConnection::send(OPacket* oPack)
+	void TCPConnection::send(boost::shared_ptr<OPacket> oPack)
 	{
 		hm->encryptHeader(oPack);
+		dfSendStorage = oPack->getDataFrame();
 		std::cout << "Sent: " << *oPack << std::endl;
 		socket->async_write_some(boost::asio::buffer(oPack->getDataFrame()->to_buffer()), boost::bind(&TCPConnection::asyncSend, shared_from_this(), boost::asio::placeholders::error));
 	}

@@ -1,21 +1,21 @@
 #include "OPacket.h"
 #include "IPacket.h"
 #include "dataframe.h"
-
+#include <boost/make_shared.hpp>
 namespace websocket
 {
 	OPacket::OPacket(char* loc, IDType senderID)
 		:senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
-		dataFrame = new dataframe();
+		dataFrame = boost::make_shared<dataframe>();
 	}
 
 	OPacket::OPacket(char* loc, IDType senderID, IDType sendToID)
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
-		dataFrame = new dataframe();
+		dataFrame = boost::make_shared<dataframe>();
 		addSendToID(sendToID);
 	}
 
@@ -23,7 +23,7 @@ namespace websocket
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
-		dataFrame = new dataframe();
+		dataFrame = boost::make_shared<dataframe>();
 		for (int i = 0; i < sendToIDsSize; i++)
 		{
 			addSendToID(sendToIDs[i]);
@@ -34,7 +34,7 @@ namespace websocket
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
-		dataFrame = new dataframe();
+		dataFrame = boost::make_shared<dataframe>();
 		this->sendToIDs = sendToIDs;
 	}
 
@@ -51,16 +51,12 @@ namespace websocket
 		dataFrame = iPack->getDataFrame();
 		if (copyData)
 		{
-			data = new std::string(*iPack->getData());
+			data = iPack->getData();
 		}
 	}
 
 	OPacket::~OPacket()
 	{
-		if (data != nullptr)
-		{
-			delete data;
-			data = nullptr;
-		}
+		
 	}
 }

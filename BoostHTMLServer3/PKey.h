@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <functional>
+#include <boost/shared_ptr.hpp>
 
 namespace websocket
 {
@@ -28,7 +29,7 @@ namespace websocket
 			return key + ": ";
 		}
 
-		virtual void run(IPacket* iPack)
+		virtual void run(boost::shared_ptr<IPacket> iPack)
 		{
 			if (runMethod != nullptr)
 				runMethod(iPack);
@@ -79,7 +80,7 @@ namespace websocket
 		virtual ~PKey();
 
 	protected:
-		std::function<void(IPacket* ipack)> runMethod;
+		std::function<void(boost::shared_ptr<IPacket> ipack)> runMethod;
 		std::string key;
 	};
 }

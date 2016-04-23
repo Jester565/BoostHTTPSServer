@@ -2,6 +2,8 @@
 #include "PacketMacros.h"
 #include <stdint.h>
 #include <string>
+#include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 
 namespace websocket
 {
@@ -19,20 +21,20 @@ namespace websocket
 
 		HeaderManager();
 
-		virtual void encryptHeader(const OPacket* pack);
+		virtual void encryptHeader(boost::shared_ptr<OPacket> pack);
 
-		virtual IPacket* const decryptHeader(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID);
+		virtual boost::shared_ptr<IPacket> const decryptHeader(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID);
 
 		virtual ~HeaderManager();
 
 	protected:
-		virtual void encryptHeaderAsBigEndian(const OPacket* pack);
+		virtual void encryptHeaderAsBigEndian(boost::shared_ptr<OPacket> pack);
 
-		virtual void encryptHeaderToBigEndian(const OPacket* pack);
+		virtual void encryptHeaderToBigEndian(boost::shared_ptr<OPacket> pack);
 
-		virtual IPacket* const decryptHeaderAsBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID);
+		virtual boost::shared_ptr<IPacket> const decryptHeaderAsBigEndian(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID);
 
-		virtual IPacket* const decryptHeaderFromBigEndian(char* header, unsigned int size, bool& serverRead, dataframe* dataFrame, IDType cID);
+		virtual boost::shared_ptr<IPacket> const decryptHeaderFromBigEndian(char* header, unsigned int size, bool& serverRead, boost::shared_ptr<dataframe> dataFrame, IDType cID);
 
 		bool bEndian;
 	};

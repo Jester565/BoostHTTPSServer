@@ -2,6 +2,7 @@
 #include "PacketMacros.h"
 #include <string>
 #include <iostream>
+#include <boost/shared_ptr.hpp>
 #include <vector>
 
 namespace websocket
@@ -82,10 +83,10 @@ namespace websocket
 		Return:
 		- (bool)  True if data was not reset, false if it was reset
 		**/
-		bool setData(std::string* data)
+		bool setData(boost::shared_ptr<std::string> data)
 		{
 			bool reset = !(data == nullptr);
-			this->data = new std::string(*data);
+			this->data = data;
 			return reset;
 		}
 
@@ -104,7 +105,7 @@ namespace websocket
 			return sendToIDs;
 		}
 
-		dataframe* getDataFrame()
+		boost::shared_ptr<dataframe> getDataFrame()
 		{
 			return dataFrame;
 		}
@@ -133,7 +134,7 @@ namespace websocket
 		char locKey[3];
 		IDType senderID;
 		std::vector <IDType> sendToIDs;
-		dataframe* dataFrame;
-		std::string* data;
+		boost::shared_ptr<dataframe> dataFrame;
+		boost::shared_ptr<std::string> data;
 	};
 }

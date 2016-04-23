@@ -38,19 +38,19 @@ namespace websocket
 			return pm;
 		}
 
-		virtual void send(OPacket* oPack);
+		virtual void send(boost::shared_ptr<OPacket> oPack);
 
-		virtual void send(OPacket* oPack, IDType sendTo);
+		virtual void send(boost::shared_ptr<OPacket> oPack, IDType sendTo);
 
-		virtual void send(OPacket* oPack, Client* sendToClient);
+		virtual void send(boost::shared_ptr<OPacket> oPack, Client* sendToClient);
 
-		virtual void sendToAll(OPacket* oPack);
+		virtual void sendToAll(boost::shared_ptr<OPacket> oPack);
 
-		virtual void sendToAllExceptSender(OPacket* oPack);
+		virtual void sendToAllExceptSender(boost::shared_ptr<OPacket> oPack);
 
-		virtual void sendToAllExcept(OPacket* oPack, IDType excludeID);
+		virtual void sendToAllExcept(boost::shared_ptr<OPacket> oPack, IDType excludeID);
 
-		virtual void sendToAllExcept(OPacket* oPack, IDType* excludeIDs, unsigned int size);
+		virtual void sendToAllExcept(boost::shared_ptr<OPacket> oPack, IDType* excludeIDs, unsigned int size);
 
 		void setErrorMode(int mode)
 		{

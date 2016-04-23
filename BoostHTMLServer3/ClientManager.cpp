@@ -76,7 +76,7 @@ namespace websocket
 		return trackNum;
 	}
 
-	void ClientManager::send(OPacket* oPack)
+	void ClientManager::send(boost::shared_ptr<OPacket> oPack)
 	{
 		for (int i = 0; i < oPack->getSendToIDs().size(); i++)
 		{
@@ -92,7 +92,7 @@ namespace websocket
 		}
 	}
 
-	void ClientManager::send(OPacket* oPack, IDType sendToID)
+	void ClientManager::send(boost::shared_ptr<OPacket> oPack, IDType sendToID)
 	{
 		Client* client = getClient(sendToID);
 		if (client == nullptr)
@@ -114,7 +114,7 @@ namespace websocket
 		client->getTCPConnection()->send(oPack);
 	}
 
-	void ClientManager::send(OPacket* oPack, Client* client)
+	void ClientManager::send(boost::shared_ptr<OPacket> oPack, Client* client)
 	{
 		if (client == nullptr)
 		{
@@ -135,7 +135,7 @@ namespace websocket
 		client->getTCPConnection()->send(oPack);
 	}
 
-	void ClientManager::sendToAll(OPacket* oPack)
+	void ClientManager::sendToAll(boost::shared_ptr<OPacket> oPack)
 	{
 		for (auto iter = clients.begin(); iter != clients.end(); iter++)
 		{
@@ -144,12 +144,12 @@ namespace websocket
 		}
 	}
 
-	void ClientManager::sendToAllExceptSender(OPacket* oPack)
+	void ClientManager::sendToAllExceptSender(boost::shared_ptr<OPacket> oPack)
 	{
 		sendToAllExcept(oPack, oPack->getSenderID());
 	}
 
-	void ClientManager::sendToAllExcept(OPacket* oPack, IDType excludeID)
+	void ClientManager::sendToAllExcept(boost::shared_ptr<OPacket> oPack, IDType excludeID)
 	{
 		for (auto iter = clients.begin(); iter != clients.end(); iter++)
 		{
@@ -161,7 +161,7 @@ namespace websocket
 		}
 	}
 
-	void ClientManager::sendToAllExcept(OPacket* oPack, IDType* excludeIDs, unsigned int size)
+	void ClientManager::sendToAllExcept(boost::shared_ptr<OPacket> oPack, IDType* excludeIDs, unsigned int size)
 	{
 		for (auto iter = clients.begin(); iter != clients.end(); iter++)
 		{

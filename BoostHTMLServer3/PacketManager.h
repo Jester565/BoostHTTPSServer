@@ -30,7 +30,7 @@ namespace websocket
 
 		int removePKeys(std::vector <PKey*>);
 
-		void asyncProcess(IPacket* const iPack, bool serverRead);
+		void asyncProcess(boost::shared_ptr<IPacket> iPack, bool serverRead);
 
 		void process();
 
@@ -49,7 +49,7 @@ namespace websocket
 		~PacketManager();
 
 	protected:
-		void serverProcess(IPacket* const iPack);
+		void serverProcess(boost::shared_ptr<IPacket> iPack);
 
 		int binarySearchKey(bool& found, std::string key, int f = 0, int l = USE_PKEYS_SIZE);
 		std::vector <std::list <PKey*>> pKeys;
