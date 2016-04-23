@@ -1,6 +1,7 @@
 #pragma once
 #include "PacketMacros.h"
 #include "reply.h"
+#include "dataframe.h"
 #include <utility>
 #include <iostream>
 #include <boost/asio.hpp>

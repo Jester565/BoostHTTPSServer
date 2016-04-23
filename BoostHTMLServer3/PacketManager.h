@@ -3,6 +3,7 @@
 #include <list>
 #include <mutex>
 #include <queue>
+#include <boost/shared_ptr.hpp>
 
 namespace websocket
 {
@@ -34,7 +35,7 @@ namespace websocket
 
 		void process();
 
-		void addToProcessing(IPacket* iPack)
+		void addToProcessing(boost::shared_ptr<IPacket> iPack)
 		{
 			syncProcessMutex.lock();
 			syncProcess.push(iPack);
@@ -53,7 +54,7 @@ namespace websocket
 
 		int binarySearchKey(bool& found, std::string key, int f = 0, int l = USE_PKEYS_SIZE);
 		std::vector <std::list <PKey*>> pKeys;
-		std::queue <IPacket*> syncProcess;
+		std::queue <boost::shared_ptr<IPacket>> syncProcess;
 		std::mutex pKeysMutex;
 		std::mutex syncProcessMutex;
 		ClientManager* cm;

@@ -4,14 +4,14 @@
 #include <boost/make_shared.hpp>
 namespace websocket
 {
-	OPacket::OPacket(char* loc, IDType senderID)
+	OPacket::OPacket(const char* loc, IDType senderID)
 		:senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
 		dataFrame = boost::make_shared<dataframe>();
 	}
 
-	OPacket::OPacket(char* loc, IDType senderID, IDType sendToID)
+	OPacket::OPacket(const char* loc, IDType senderID, IDType sendToID)
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
@@ -19,7 +19,7 @@ namespace websocket
 		addSendToID(sendToID);
 	}
 
-	OPacket::OPacket(char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize)
+	OPacket::OPacket(const char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize)
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);
@@ -30,7 +30,7 @@ namespace websocket
 		}
 	}
 
-	OPacket::OPacket(char* loc, IDType senderID, std::vector <IDType> sendToIDs)
+	OPacket::OPacket(const char* loc, IDType senderID, std::vector <IDType> sendToIDs)
 		: senderID(senderID), data(nullptr)
 	{
 		setLocKey(loc);

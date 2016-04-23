@@ -56,6 +56,7 @@ namespace websocket
 
 	Server::~Server()
 	{
+	  ioService->stop();
 		if (tcpAcceptor != nullptr)
 		{
 			delete tcpAcceptor;
@@ -76,16 +77,16 @@ namespace websocket
 			delete pm;
 			pm = nullptr;
 		}
-		ioService->stop();
-		if (ioServiceThread != nullptr)
-		{
-			delete ioServiceThread;
-			ioServiceThread = nullptr;
-		}
+		ioService->reset();
 		if (ioService != nullptr)
 		{
 			delete ioService;
 			ioService = nullptr;
+		}
+		if (ioServiceThread != nullptr)
+		{
+		  delete ioServiceThread;
+		  ioServiceThread = nullptr;
 		}
 		google::protobuf::ShutdownProtobufLibrary();
 	}

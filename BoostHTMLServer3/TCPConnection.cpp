@@ -33,7 +33,7 @@ namespace websocket
 
 	void TCPConnection::startSSLHandhshake()
 	{
-		socket->async_handshake(boost::asio::ssl::stream_base::server, boost::bind(&TCPConnection::asyncSSLHandshake, this, boost::asio::placeholders::error));
+	  socket->async_handshake(boost::asio::ssl::stream_base::server, boost::bind(&TCPConnection::asyncSSLHandshake, shared_from_this(), boost::asio::placeholders::error));
 	}
 
 	void TCPConnection::asyncSSLHandshake(const boost::system::error_code& error)
@@ -96,6 +96,7 @@ namespace websocket
 				throw error;
 				break;
 			case RETURN_ON_ERROR:
+			  pm->getClientManager()->removeClient(cID);
 				return;
 			case RECALL_ON_ERROR:
 				delete receiveData;
@@ -185,17 +186,8 @@ namespace websocket
 
 	TCPConnection::~TCPConnection()
 	{
-		if (hm != nullptr)
-		{
-			delete hm;
-			hm = nullptr;
-		}
-		if (receiveData != nullptr)
-		{
-			delete receiveData;
-			receiveData = nullptr;
-		}
 		boost::system::error_code ec;
+		socket->lowest_layer().cancel();
 		socket->lowest_layer().shutdown(tcp::socket::shutdown_both, ec);
 		if (ec)
 		{
@@ -204,5 +196,16 @@ namespace websocket
 		socket->lowest_layer().close();
 		delete socket;
 		socket = nullptr;
+		if (hm != nullptr)
+		{
+			delete hm;
+			hm = nullptr;
+		}
+		if (receiveData != nullptr)
+		{
+		  delete receiveData;
+			receiveData = nullptr;
+		}
+		std::cout << "TCPCONNECTION destructor called!" << std::endl;
 	}
 }

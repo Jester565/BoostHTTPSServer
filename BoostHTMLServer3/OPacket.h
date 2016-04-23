@@ -14,13 +14,13 @@ namespace websocket
 	{
 		friend class HeaderManager;
 	public:
-		OPacket(char* loc = nullptr, IDType senderID = 0);
+		OPacket(const char* loc = nullptr, IDType senderID = 0);
 
-		OPacket(char* loc, IDType senderID, IDType sendToID);
+		OPacket(const char* loc, IDType senderID, IDType sendToID);
 
-		OPacket(char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize);
+		OPacket(const char* loc, IDType senderID, IDType* sendToIDs, unsigned int sendToIDsSize);
 
-		OPacket(char* loc, IDType senderID, std::vector <IDType> sendToIDs);
+		OPacket(const char* loc, IDType senderID, std::vector <IDType> sendToIDs);
 
 		OPacket(IPacket* iPack, bool copyData = true);
 		/**
@@ -28,7 +28,7 @@ namespace websocket
 		Params:
 		- (char*) A 2 character long array with the locKey you want to set it to. If nullptr, locKey will be set to UNDEFINED_LOC (PacketMacros).
 		**/
-		void setLocKey(char* loc)
+		void setLocKey(const char* loc)
 		{
 			if (loc != nullptr)
 			{

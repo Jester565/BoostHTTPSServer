@@ -82,7 +82,7 @@ namespace websocket
 				syncProcessMutex.unlock();
 				break;
 			}
-			IPacket* iPack = syncProcess.front();
+			boost::shared_ptr<IPacket> iPack = syncProcess.front();
 			syncProcess.pop();
 			syncProcessMutex.unlock();
 			bool found = false;
@@ -146,7 +146,7 @@ namespace websocket
 	{
 		while (!syncProcess.empty())
 		{
-			delete syncProcess.front();
+		  //delete syncProcess.front();
 			syncProcess.pop();
 		}
 		while (!pKeys.empty())
