@@ -15,7 +15,7 @@
 			"file": "TCPConnection.cpp",
 			"settings":
 			{
-				"buffer_size": 5950,
+				"buffer_size": 6240,
 				"line_ending": "Unix"
 			}
 		},
@@ -23,7 +23,7 @@
 			"file": "PacketManager.cpp",
 			"settings":
 			{
-				"buffer_size": 3528,
+				"buffer_size": 3573,
 				"line_ending": "Unix"
 			}
 		},
@@ -31,7 +31,7 @@
 			"file": "IPacket.cpp",
 			"settings":
 			{
-				"buffer_size": 800,
+				"buffer_size": 839,
 				"line_ending": "Unix"
 			}
 		},
@@ -39,7 +39,7 @@
 			"file": "Source.cpp",
 			"settings":
 			{
-				"buffer_size": 192,
+				"buffer_size": 193,
 				"line_ending": "Unix"
 			}
 		},
@@ -47,7 +47,7 @@
 			"file": "HeaderManager.cpp",
 			"settings":
 			{
-				"buffer_size": 5387,
+				"buffer_size": 5725,
 				"line_ending": "Unix"
 			}
 		},
@@ -55,7 +55,7 @@
 			"file": "Client.cpp",
 			"settings":
 			{
-				"buffer_size": 305,
+				"buffer_size": 355,
 				"line_ending": "Unix"
 			}
 		},
@@ -63,7 +63,7 @@
 			"file": "ClientManager.cpp",
 			"settings":
 			{
-				"buffer_size": 4216,
+				"buffer_size": 4342,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,7 +71,7 @@
 			"file": "OPacket.cpp",
 			"settings":
 			{
-				"buffer_size": 1363,
+				"buffer_size": 1402,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +95,7 @@
 			"file": "Server.cpp",
 			"settings":
 			{
-				"buffer_size": 1785,
+				"buffer_size": 1811,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +103,7 @@
 			"file": "SetupManager.cpp",
 			"settings":
 			{
-				"buffer_size": 896,
+				"buffer_size": 1051,
 				"line_ending": "Unix"
 			}
 		},
@@ -112,6 +112,14 @@
 			"settings":
 			{
 				"buffer_size": 2483,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "logfile.out",
+			"settings":
+			{
+				"buffer_size": 64506,
 				"line_ending": "Unix"
 			}
 		},
@@ -127,7 +135,7 @@
 			"file": "ClientManager.h",
 			"settings":
 			{
-				"buffer_size": 1464,
+				"buffer_size": 1590,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,7 +143,7 @@
 			"file": "HeaderManager.h",
 			"settings":
 			{
-				"buffer_size": 947,
+				"buffer_size": 1156,
 				"line_ending": "Unix"
 			}
 		},
@@ -143,7 +151,7 @@
 			"file": "IPacket.h",
 			"settings":
 			{
-				"buffer_size": 1448,
+				"buffer_size": 1570,
 				"line_ending": "Unix"
 			}
 		},
@@ -151,7 +159,7 @@
 			"file": "OPacket.h",
 			"settings":
 			{
-				"buffer_size": 3020,
+				"buffer_size": 3136,
 				"line_ending": "Unix"
 			}
 		},
@@ -167,7 +175,7 @@
 			"file": "PacketManager.h",
 			"settings":
 			{
-				"buffer_size": 1109,
+				"buffer_size": 1201,
 				"line_ending": "Unix"
 			}
 		},
@@ -175,7 +183,7 @@
 			"file": "PKey.h",
 			"settings":
 			{
-				"buffer_size": 1637,
+				"buffer_size": 1705,
 				"line_ending": "Unix"
 			}
 		},
@@ -199,7 +207,7 @@
 			"file": "SetupManager.h",
 			"settings":
 			{
-				"buffer_size": 402,
+				"buffer_size": 456,
 				"line_ending": "Unix"
 			}
 		},
@@ -215,7 +223,7 @@
 			"file": "TCPConnection.h",
 			"settings":
 			{
-				"buffer_size": 1605,
+				"buffer_size": 1686,
 				"line_ending": "Unix"
 			}
 		}
@@ -312,7 +320,7 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -321,15 +329,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5950,
+						"buffer_size": 6240,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4434,
-								4434
+								0,
+								0
 							]
 						],
 						"settings":
@@ -341,7 +349,7 @@
 						"translation.y": 2397.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -350,15 +358,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3528,
+						"buffer_size": 3573,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3522,
-								3522
+								0,
+								0
 							]
 						],
 						"settings":
@@ -370,7 +378,7 @@
 						"translation.y": 2117.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -379,15 +387,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 800,
+						"buffer_size": 839,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+								0,
+								0
 							]
 						],
 						"settings":
@@ -399,7 +407,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -408,7 +416,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 192,
+						"buffer_size": 193,
 						"regions":
 						{
 						},
@@ -427,7 +435,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -436,7 +444,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5387,
+						"buffer_size": 5725,
 						"regions":
 						{
 						},
@@ -456,7 +464,7 @@
 						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -465,7 +473,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 305,
+						"buffer_size": 355,
 						"regions":
 						{
 						},
@@ -484,7 +492,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -493,36 +501,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4216,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								78,
-								78
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "OPacket.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1363,
+						"buffer_size": 4342,
 						"regions":
 						{
 						},
@@ -542,7 +521,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "OPacket.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
@@ -570,7 +578,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
@@ -599,7 +607,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -608,15 +616,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1785,
+						"buffer_size": 1811,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								719,
-								719
+								0,
+								0
 							]
 						],
 						"settings":
@@ -628,7 +636,7 @@
 						"translation.y": 308.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -637,7 +645,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 896,
+						"buffer_size": 1051,
 						"regions":
 						{
 						},
@@ -657,7 +665,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -686,6 +694,34 @@
 						"translation.y": 170.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "logfile.out",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 64506,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9129,
+								9129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3213.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
 					"type": "text"
 				}
@@ -696,7 +732,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "Client.h",
 					"semi_transient": false,
 					"settings":
@@ -721,16 +757,45 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "ClientManager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1464,
+						"buffer_size": 1590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "HeaderManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1156,
 						"regions":
 						{
 						},
@@ -754,20 +819,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "HeaderManager.h",
+					"buffer": 17,
+					"file": "IPacket.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 947,
+						"buffer_size": 1570,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								153,
-								153
+								0,
+								0
 							]
 						],
 						"settings":
@@ -783,41 +848,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
-					"file": "IPacket.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1448,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "OPacket.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3020,
+						"buffer_size": 3136,
 						"regions":
 						{
 						},
@@ -837,11 +873,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "PacketMacros.h",
 					"semi_transient": false,
 					"settings":
@@ -866,24 +902,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "PacketManager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1109,
+						"buffer_size": 1201,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1091,
-								1091
+								0,
+								0
 							]
 						],
 						"settings":
@@ -895,24 +931,24 @@
 						"translation.y": 529.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "PKey.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1637,
+						"buffer_size": 1705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								279,
-								280
+								0,
+								0
 							]
 						],
 						"settings":
@@ -924,11 +960,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "PKeyOwner.h",
 					"semi_transient": false,
 					"settings":
@@ -953,11 +989,11 @@
 						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "Server.h",
 					"semi_transient": false,
 					"settings":
@@ -982,16 +1018,16 @@
 						"translation.y": 247.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "SetupManager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 402,
+						"buffer_size": 456,
 						"regions":
 						{
 						},
@@ -1011,11 +1047,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "TCPAcceptor.h",
 					"semi_transient": false,
 					"settings":
@@ -1040,16 +1076,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"file": "TCPConnection.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1605,
+						"buffer_size": 1686,
 						"regions":
 						{
 						},
@@ -1069,7 +1105,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 21,
 					"type": "text"
 				}
 			]
